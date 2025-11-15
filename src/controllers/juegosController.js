@@ -1,4 +1,4 @@
-import Juego from "gametracker-backend/models/Juego.js";
+import Juego from "../models/Juego.js";
 
 // GET /api/juegos
 export const obtenerJuegos = async (_req, res, next) => {
@@ -6,6 +6,7 @@ export const obtenerJuegos = async (_req, res, next) => {
     const juegos = await Juego.find().sort({ fechaCreacion: -1 });
     res.json(juegos);
   } catch (error) {
+    console.error("Error al obtener juegos:", error);
     next(error);
   }
 };
@@ -20,6 +21,7 @@ export const obtenerJuegoPorId = async (req, res, next) => {
     }
     res.json(juego);
   } catch (error) {
+    console.error("Error al obtener juego por id:", error);
     next(error);
   }
 };
@@ -32,6 +34,7 @@ export const crearJuego = async (req, res, next) => {
     const guardado = await nuevoJuego.save();
     res.status(201).json(guardado);
   } catch (error) {
+    console.error("Error al crear juego:", error);
     next(error);
   }
 };
@@ -51,6 +54,7 @@ export const actualizarJuego = async (req, res, next) => {
 
     res.json(actualizado);
   } catch (error) {
+    console.error("Error al actualizar juego:", error);
     next(error);
   }
 };
@@ -67,6 +71,7 @@ export const eliminarJuego = async (req, res, next) => {
 
     res.status(204).end();
   } catch (error) {
+    console.error("Error al eliminar juego:", error);
     next(error);
   }
 };

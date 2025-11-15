@@ -1,4 +1,4 @@
-import Resena from "gametracker-backend/models/Resena.js";
+import Resena from "../models/Resena.js";
 
 // GET /api/resenas
 export const obtenerTodasResenas = async (_req, res, next) => {
@@ -6,6 +6,7 @@ export const obtenerTodasResenas = async (_req, res, next) => {
     const resenas = await Resena.find().sort({ fechaCreacion: -1 });
     res.json(resenas);
   } catch (error) {
+    console.error("Error al obtener reseñas:", error);
     next(error);
   }
 };
@@ -19,6 +20,7 @@ export const obtenerResenasPorJuego = async (req, res, next) => {
     });
     res.json(resenas);
   } catch (error) {
+    console.error("Error al obtener reseñas de juego:", error);
     next(error);
   }
 };
@@ -30,6 +32,7 @@ export const crearResena = async (req, res, next) => {
     const guardada = await nuevaResena.save();
     res.status(201).json(guardada);
   } catch (error) {
+    console.error("Error al crear reseña:", error);
     next(error);
   }
 };
@@ -50,6 +53,7 @@ export const actualizarResena = async (req, res, next) => {
 
     res.json(actualizada);
   } catch (error) {
+    console.error("Error al actualizar reseña:", error);
     next(error);
   }
 };
@@ -66,6 +70,7 @@ export const eliminarResena = async (req, res, next) => {
 
     res.status(204).end();
   } catch (error) {
+    console.error("Error al eliminar reseña:", error);
     next(error);
   }
 };
