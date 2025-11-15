@@ -12,11 +12,10 @@ dotenv.config();
 
 const app = express();
 
-// Middlewares nivel jefe de TI / seguridad básica
 app.use(helmet());
 app.use(
   cors({
-    origin: "*", // si quieres, luego restringes al dominio del frontend
+    origin: "*", 
   })
 );
 app.use(express.json());
@@ -48,12 +47,12 @@ const PORT = process.env.PORT || 4000;
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    console.log("✅ Conectado a MongoDB Atlas");
+    console.log("Conectado a MongoDB Atlas");
     app.listen(PORT, () => {
-      console.log(`🚀 API escuchando en puerto ${PORT}`);
+      console.log(`API escuchando en puerto ${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("❌ Error conectando a MongoDB", err);
+    console.error(" Error conetando a MongoDB", err);
     process.exit(1);
   });
