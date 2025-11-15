@@ -8,7 +8,7 @@ import mongoose from "mongoose";
  *   puntuacion: Number,      // 1-5
  *   textoResena: String,
  *   horasJugadas: Number,
- *   dificultad: String,      // "Fácil", "Normal", "Difícil"
+ *   dificultad: String,      // "Fácil", "Normal", "Difícil", "Experto"
  *   recomendaria: Boolean,
  *   fechaCreacion: Date,
  *   fechaActualizacion: Date
@@ -40,7 +40,7 @@ const resenaSchema = new mongoose.Schema(
     },
     dificultad: {
       type: String,
-      enum: ["Fácil", "Normal", "Difícil"],
+      enum: ["Fácil", "Normal", "Difícil", "Experto"], // 👈 AÑADIMOS "Experto"
       default: "Normal",
     },
     recomendaria: {
